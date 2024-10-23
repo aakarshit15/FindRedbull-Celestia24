@@ -51,7 +51,7 @@ function App() {
         const top = generateRandom(10, 90) + "%";
         const left = generateRandom(10, 90) + "%";
         
-        newArea = { id: i, top, left, width: `${i * 20 + 60}px`, height: `${i * 20 + 60}px` };
+        newArea = { id: i, top, left, width: `80px`, height: `80px` };
         
         if (isPositionValid(newArea, areas, minDistance)) {
           validPosition = true;
