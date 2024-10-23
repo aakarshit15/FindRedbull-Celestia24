@@ -112,7 +112,7 @@ function App() {
   return (
     <>
       <div className="relative w-full h-screen overflow-hidden bg-opacity-100" onMouseMove={handleMouseMove}>
-        <div className={`pointer-events-none absolute w-[2.3rem] h-[2.3rem] rounded-full ${(score < 3 && timer > 0) && "shadow-[0_0_0_9999px_rgba(0,0,0,1)]"} ${mode === 0 ? "bg-black" : "bg-transparent"} z-20`} style={{ top: cursorPosition.y - 25, left: cursorPosition.x - 25, }} />
+        <div className={`pointer-events-none absolute w-[1.6rem] h-[1.6rem] rounded-full ${(score < 3 && timer > 0) && "shadow-[0_0_0_9999px_rgba(0,0,0,1)]"} ${mode === 0 ? "bg-black" : "bg-transparent"} z-20`} style={{ top: cursorPosition.y - 25, left: cursorPosition.x - 25, }} />
         <img src={img1} alt="background" className="absolute w-full h-full z-0" />
 
         {
