@@ -11,6 +11,7 @@ function App() {
   const [clicked, setClicked] = useState([]);
   const [clickableAreas, setClickableAreas] = useState([]);
   const [mode, setMode] = useState(0);
+  const [timerText, setTimerText] = useState("text-white");
 
   const handleMouseMove = (e) => {
     setCursorPostion({ x: e.clientX, y: e.clientY });
@@ -101,10 +102,17 @@ function App() {
   useEffect(() => {
     setClickableAreas(generateClickableAreas());
   }, []); 
+
+  useEffect(() => {
+    if(timer === 0) {
+      setTimerText("bg-slate-300 p-1 rounded-lg");
+    }
+  }, [timer]);
+
   return (
     <>
       <div className="relative w-full h-screen overflow-hidden bg-opacity-100" onMouseMove={handleMouseMove}>
-        <div className={`pointer-events-none absolute w-[50px] h-[50px] rounded-full ${(score < 3 && timer > 0) && "shadow-[0_0_0_9999px_rgba(0,0,0,1)]"} ${mode === 0 ? "bg-black" : "bg-transparent"} z-20`} style={{ top: cursorPosition.y - 25, left: cursorPosition.x - 25, }} />
+        <div className={`pointer-events-none absolute w-[4rem] h-[4rem] rounded-full ${(score < 3 && timer > 0) && "shadow-[0_0_0_9999px_rgba(0,0,0,1)]"} ${mode === 0 ? "bg-black" : "bg-transparent"} z-20`} style={{ top: cursorPosition.y - 25, left: cursorPosition.x - 25, }} />
         <img src={img1} alt="background" className="absolute w-full h-full z-0" />
 
         {
@@ -116,7 +124,7 @@ function App() {
           ))
         }
 
-        <div className={`timer absolute z-30 text-3xl font-bold top-5 left-5 text-white`}>
+        <div className={`timer absolute z-30 text-3xl font-bold top-5 left-5 ${timerText}`}>
           Time Left: {`${mode === 0 ? "30" : timer}`}s
         </div>
 
@@ -124,7 +132,7 @@ function App() {
           Start
         </button>
 
-        <div className="score absolute z-30 text-white text-3xl font-bold top-5 right-5">
+        <div className={`score absolute z-30 text-3xl font-bold top-5 right-5 ${timerText}`}>
           Score: {score}
         </div>
       </div>
